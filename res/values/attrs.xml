@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="com.example.DrawableView">
+        <attr name="src" format="reference"/>
+    </declare-styleable>
+</resources>
