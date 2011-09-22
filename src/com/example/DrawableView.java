@@ -58,8 +58,22 @@ public class DrawableView extends View {
 
         int saveCount = canvas.save();
 
-        // this will center the small header image
-        matrix.setTranslate((int) ((viewWidth - drawableWidth) * 0.5f + 0.5f), (int) ((viewHeight - drawableHeight) * 0.5f + 0.5f));
+        float scale;
+        float dx;
+        float dy;
+
+        if (drawableWidth <= viewWidth && drawableHeight <= viewHeight) {
+            scale = 1.0f;
+        } else {
+            scale = Math.min((float) viewWidth / (float) drawableWidth,
+                    (float) viewHeight / (float) drawableHeight);
+        }
+
+        dx = (int) ((viewWidth - drawableWidth * scale) * 0.5f + 0.5f);
+        dy = (int) ((viewHeight - drawableHeight * scale) * 0.5f + 0.5f);
+
+        matrix.setScale(scale, scale);
+        matrix.postTranslate(dx, dy);
 
         canvas.concat(matrix);
 

@@ -54,3 +54,4 @@ local.properties
 target/
 src_managed/
 project/
+out/
